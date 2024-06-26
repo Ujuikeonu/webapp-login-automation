@@ -1,14 +1,14 @@
-class LoginPage {
+export class LoginPage {
     visit() {
       cy.visit('URL_OF_YOUR_LOGIN_PAGE'); // Replace with the actual URL
     }
   
     usernameField(username) {
-      cy.get('#username').type(username);
+      cy.get('#username').type('username');
     }
   
     passwordField(password) {
-      cy.get('#password').type(password);
+      cy.get('#password').type('password');
     }
   
     clickLogin() {
