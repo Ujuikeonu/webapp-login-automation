@@ -1,4 +1,4 @@
-import {LoginPge} from "../support/pages/index";
+import { LoginPage } from "../support/pages";
 
 const loginPage = new LoginPage();
 
@@ -9,12 +9,12 @@ describe('Login Test',()=>{
   })
 
   it('Test that the user is able to Login successfully with valid credentials', () =>{
-    loginPage.usernameField('validUsername');//insert valid username
-    loginPage.passwordField('validPassword');
+    loginPage.usernameField('username');
+    loginPage.passwordField('password');
     loginPage.clickLogin();
     // Assertion for successful login
     loginPage.verifySuccessfulLogin();
-    // Alternatively, verify the presence of a logout button
+    // To verify the presence of a logout button
     loginPage.verifyLogoutButton();
   })
 
