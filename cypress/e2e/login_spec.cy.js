@@ -12,23 +12,23 @@ describe('Login Test',()=>{
     loginPage.usernameField('username');
     loginPage.passwordField('password');
     loginPage.clickLogin();
-    // Assertion for successful login
+    //Assertion for successful login
     loginPage.verifySuccessfulLogin();
-    // To verify the presence of a logout button
+    //To verify the presence of a logout button
     loginPage.verifyLogoutButton();
   })
 
   it('Test that the user is unable to login with invalid credentials', () =>{
-    loginPage.usernameField('invalidUsername'); // Replace with invalid username
-    loginPage.passwordField('invalidPassword'); // Replace with invalid password
+    loginPage.usernameField('invalidUsername'); 
+    loginPage.passwordField('invalidPassword');
     loginPage.clickLogin();
-    //assert that error message is visible and its content
-    loginPage.getErrorMessage().should('be.visible').and('contain', 'Invalid credentials'); // Adjust the error message as per your application
+    //Assert that error message is visible and its content
+    loginPage.getErrorMessage().should('be.visible').and('contain', 'Invalid credentials');
   })
 
   it('Test that a descriptive error message is displayed when login fails', () =>{
-    loginPage.usernameField('invalidUsername'); // Replace with invalid username
-    loginPage.passwordField('invalidPassword'); // Replace with invalid password
+    loginPage.usernameField('invalidUsername');
+    loginPage.passwordField('invalidPassword');
     loginPage.clickLogin();
     //Assert that the error message is visible
     loginPage.getErrorMessage().should('be.visible');

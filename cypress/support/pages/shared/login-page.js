@@ -19,14 +19,14 @@ export class LoginPage {
       return cy.get('#errorMessage');
     }
 
-    // Example method to verify successful login, this could be checking the URL or an element on the dashboard
+    // method to verify successful login, this could be checking the URL or an element on the dashboard
     verifySuccessfulLogin() {
     cy.url().should('include', '/dashboard'); // Replace with the actual URL part for the logged-in area
   }
 
-    // Example method to verify the presence of a logout button
+    //method to verify the presence of a logout button
     verifyLogoutButton() {
-    cy.get('#logoutButton').should('be.visible'); // Adjust selector as per your application
+    cy.get('#logoutButton').should('be.visible'); 
   }
   }
 
