@@ -1,34 +1,43 @@
 export class LoginPage {
-    visit() {
-      cy.visit('URL_OF_YOUR_LOGIN_PAGE'); // Replace with the actual URL
-    }
-  
-    usernameField(username) {
-      cy.get('#username').type('username');
-    }
-  
-    passwordField(password) {
-      cy.get('#password').type('password');
-    }
-  
-    clickLogin() {
-      cy.get('#loginButton').click();
-    }
-    
-    getErrorMessage() {
-      return cy.get('#errorMessage');
-    }
+  usernameField = () => cy.get('#username');
+  // usernameField = () => cy.get('#email');
+  passwordField = () => cy.get('#password');
+  loginButton = () => cy.get('#loginButton').contains("Login");
+  //loginButton = () => cy.get('form.ng-dirty > .btn').contains("Login");
 
-    // Example method to verify successful login, this could be checking the URL or an element on the dashboard
-    verifySuccessfulLogin() {
-    cy.url().should('include', '/dashboard'); // Replace with the actual URL part for the logged-in area
+  accessLoginModal() {
+    cy.visit('/');
   }
 
-    // Example method to verify the presence of a logout button
-    verifyLogoutButton() {
-    cy.get('#logoutButton').should('be.visible'); // Adjust selector as per your application
+  clickLogin = () => {
+    return this.loginButton().click({ force: true });
+  };
+
+  login = (username, password) => {
+    this.usernameField().type(username);
+    this.passwordField().type(password);
+    return this.clickLogin();
+  };
+  // login = (email, password) => {
+  //   this.usernameField().type(email);
+  //   this.passwordField().type(password);
+  //   return this.clickLogin();
+  // };
+
+  verifySuccessfulLogin() {
+    cy.contains('Login Successful').should('be.visible');
+    //cy.get('app-progress-dialog > .container').contains('Just a moment').should('be.visible');
   }
+
+
+  getErrorMessage() {
+    return cy.get('#errorMessage');
   }
+
+  verifyLogoutButton() {
+    cy.get('#logoutButton').should('be.visible');
+  }
+}
 
   
 
